@@ -21,7 +21,7 @@
     "build": "bun-canary compile src/cli.ts --outfile dist/claudex --no-compile-autoload-dotenv --no-compile-autoload-bunfig"
   },
   "dependencies": {
-    "valibot": "1.4.2"
+    "valibot": "1.5.0"
   },
   "devDependencies": {
     "@types/bun": "1.4.4"
