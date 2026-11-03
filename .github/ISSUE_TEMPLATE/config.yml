@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability privately
+    url: https://github.com/magarcia/claudex/security/advisories/new
+    about: Never report credential leaks or vulnerabilities in a public issue. See SECURITY.md.

@@ -1,0 +1,31 @@
+name: Feature request
+description: Describe a problem and the change that would help.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check existing issues and the documented protocol limits before submitting. Do not include credentials or private conversation content.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem should this solve?
+      description: Describe the use case and who would benefit. Use a synthetic example if needed.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe what should happen from the user's point of view.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Include current workarounds and why they do not solve the problem.
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Compatibility or security considerations
+      description: Note affected platforms, providers, model capabilities, or credential handling. Leave empty if unknown.

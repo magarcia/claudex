@@ -1,0 +1,33 @@
+{
+  "name": "claudex",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "bin": {
+    "claudex": "./dist/claudex"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "./dist/claudex",
+    "serve": "./dist/claudex serve",
+    "login": "./dist/claudex login",
+    "doctor": "./dist/claudex doctor",
+    "dev": "bun --no-env-file src/cli.ts",
+    "test": "bun test --reporter=dot",
+    "check": "bun check --no-script",
+    "lint": "bun-canary lint --no-script",
+    "fmt": "bun fmt --no-script",
+    "fmt:check": "bun fmt --no-script --check",
+    "build": "bun-canary compile src/cli.ts --outfile dist/claudex --no-compile-autoload-dotenv --no-compile-autoload-bunfig"
+  },
+  "dependencies": {
+    "valibot": "1.4.2"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4"
+  },
+  "packageManager": "bun@1.4.4",
+  "engines": {
+    "bun": ">=1.4.4"
+  }
+}
