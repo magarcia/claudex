@@ -19,9 +19,9 @@ Stable Bun `1.4.4` runs TypeScript, tests, formatting, and type checks. A separa
 
 ### Compiler setup
 
-The AOT revision is pinned in `.bun-aot-version`. `scripts/setup-bun.sh` checks the download's checksum and revision, then installs it as `~/.local/bin/bun-canary`. It does not replace stable Bun or a different installed canary. Setup needs `curl`, `unzip`, and `shasum`.
+The AOT revision is pinned in `.bun-aot-version`. `scripts/setup-bun.sh` downloads a versioned package from Bun's official `@oven` npm scope, checks its checksum and executable revision, then installs it as `~/.local/bin/bun-canary`. It does not replace stable Bun or a different installed canary. Setup needs `curl`, `tar`, and `shasum`.
 
-The compiler download uses Bun's moving canary release. If that asset changes, setup fails the checksum check. When upgrading, update `.bun-aot-version` and all four checksums in `scripts/setup-bun.sh` together, then verify all CI platforms. Do not disable verification to make setup pass. If another canary is already installed, resolve the mismatch deliberately instead of overwriting it during setup.
+When upgrading, update `.bun-aot-version`, the npm package version, and all four checksums in `scripts/setup-bun.sh` together, then verify all CI platforms. Do not disable verification to make setup pass. If another canary is already installed, resolve the mismatch deliberately instead of overwriting it during setup.
 
 ### Run from source or build
 

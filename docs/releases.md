@@ -1,6 +1,6 @@
 # Releases
 
-No public release has been published yet. The intended repository is `magarcia/claudex`. Creating the remote, pushing commits or tags, running GitHub workflows, and publishing require a separate instruction.
+No public release has been published yet. The repository is `magarcia/claudex`. Pushing commits or tags, running GitHub workflows, and publishing require explicit approval.
 
 ## Supported targets
 
@@ -17,14 +17,14 @@ Bun AOT compiles for the host. Each build runs on its target architecture. Linux
 
 Do not publish binaries until these checks are complete:
 
-- Make the exact compiler revision retrievable on every supported platform. Checksums reject changed downloads, but the moving canary URL does not preserve the pinned compiler.
-- Verify redistribution requirements for Valibot and the Bun AOT runtime, including bundled third-party components. Include all required notices and license materials in each archive. The current packaging step includes only the project's `LICENSE`.
+- Verify that all four versioned `@oven` compiler packages remain available and match the checksums in `scripts/setup-bun.sh`. The extracted executable must match `.bun-aot-version`.
+- Verify redistribution requirements for the Bun AOT runtime, including bundled third-party components. The packaging script includes the project's `LICENSE` and the `licenses/` directory, including Valibot's MIT notice. Bun's static runtime requires applicable notices and a verified source/relinking distribution route, not just license copies. See [Bun's pinned licensing overview](https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/LICENSE.md) and [JavaScriptCore's pinned GNU Library GPL v2, section 6](https://github.com/oven-sh/WebKit/blob/4d45755fed4aeef19e95beb90d3d0c884a2812bd/Source/JavaScriptCore/COPYING.LIB). These materials and the relinking route remain unverified for the release.
 - Run CI and a nonpublishing release build on all four GitHub runners. Local macOS arm64 checks do not establish support for the other targets.
 
 ## Prepare and build
 
 1. Enable Actions and private vulnerability reporting in the public repository. Artifact attestations require a supported GitHub plan; public repositories can use them.
-2. Verify `.bun-version`, `.bun-aot-version`, and the compiler archive checksums. The moving canary download can change and fail verification. Update the pin and checksums together when needed.
+2. Verify `.bun-version`, `.bun-aot-version`, the compiler's npm package version, and all four archive checksums in `scripts/setup-bun.sh`. Update these together when upgrading.
 3. Update `package.json`, `bun.lock`, and `CHANGELOG.md`. Run CI on all four native targets.
 4. Create and push an approved `vX.Y.Z` tag whose version matches `package.json`.
 5. Manually run the Release workflow with that tag and `publish=false`. It checks, tests, builds, smoke-tests, and packages all four executables. It creates GitHub attestations for the archives and `SHA256SUMS`. Files remain workflow artifacts for seven days; there is no GitHub Release at this step.

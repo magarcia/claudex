@@ -68,9 +68,7 @@ jobs:
       - name: Package executable
         env:
           PLATFORM: ${{ matrix.platform }}
-        run: |
-          mkdir -p release
-          tar -czf "release/claudex-$PLATFORM.tar.gz" LICENSE -C dist claudex
+        run: sh scripts/package-release.sh "$PLATFORM"
       - uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
         with:
           subject-path: release/*.tar.gz
